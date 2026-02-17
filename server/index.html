@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 <html lang="ko">
 <head>
-    <link rel="icon" href="Logo_2.png" type="image/png">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Server Status - PUDOLY</title>
@@ -121,22 +120,22 @@
 
     <div class="container">
         <img src="Logo_2.png" class="logo" alt="Logo">
+        
         <h1>서버 안내</h1>
+        <p class="description">
+            현재 <b>재미있는 서버 생활</b></b>을 위해<br>
+            시스템 개발 중입니다.
+        </p>
+
+        <div class="status-badge">
+            서버 주소 : pudol.kro.kr
+        </div>
+
         <div class="btn-group">
             <a href="https://www.pudol.kro.kr/main" class="btn btn-primary">메인 페이지로 이동</a>
-            
-            <button class="btn btn-copy" onclick="copyToClipboard('pudol.kro.kr')">
-                📋 서버 주소 복사하기
-            </button>
+            <a href="#" class="btn btn-outline" onclick="alert('곧 업데이트될 예정입니다!')">공지사항 보기</a>
         </div>
     </div>
-    
-    <script>
-        function copyToClipboard(text) {
-              navigator.clipboard.writeText(text).then(() => {
-                  alert("클립보드에 복사되었습니다!");
-            });
-        }
-    </script>
+
 </body>
 </html>
