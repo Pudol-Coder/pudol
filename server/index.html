@@ -169,27 +169,39 @@
             <a href="#" class="btn btn-outline" onclick="alert('곧 업데이트될 예정입니다!')">공지사항 보기</a>
         </div>
     </div>
-
     <script>
         function copyAndChangeText(element, text) {
-            // 클립보드 복사 실행
+            // 1. 클립보드 복사
             navigator.clipboard.writeText(text).then(() => {
-                // 글자는 바꾸지 않고 배경색만 잠시 진하게 강조
-                element.style.backgroundColor = "#ffcc00"; 
-                element.style.color = "#ffffff";
-                element.style.transform = "scale(0.95)"; // 클릭했을 때 살짝 눌리는 효과
+                
+                // 2. 알림 창(Toast) 만들기
+                const notification = document.createElement('div');
+                notification.className = 'copy-notification';
+                notification.innerText = "복사가 완료되었습니다! ✅";
+                document.body.appendChild(notification);
     
-                // 0.5초 뒤에 원래 스타일로 복구
+                // 3. 0.1초 뒤에 아래로 내리기 (애니메이션 시작)
                 setTimeout(() => {
-                    element.style.backgroundColor = ""; 
-                    element.style.color = "";
-                    element.style.transform = "";
-                }, 500);
+                    notification.classList.add('show');
+                }, 100);
+    
+                // 4. 2초 뒤에 다시 올리고 삭제하기
+                setTimeout(() => {
+                    notification.classList.remove('show');
+                    // 애니메이션이 끝난 뒤 요소 삭제
+                    setTimeout(() => {
+                        notification.remove();
+                    }, 400);
+                }, 2000);
+    
+                // 5. 클릭 효과 (박스 살짝 눌림)
+                element.style.transform = "scale(0.96)";
+                setTimeout(() => { element.style.transform = ""; }, 100);
+    
             }).catch(err => {
-                console.error("복사 실패", err);
+                alert("복사에 실패했습니다.");
             });
         }
     </script>
-
 </body>
 </html>
