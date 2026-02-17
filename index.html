@@ -1,14 +1,71 @@
 <!DOCTYPE html>
-<html lang="ko"> <head>
-    <meta charset="UTF-8"> <title>PUDOLY PUDOL</title>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Server - Welcome</title>
+    
+    <style>
+        /* 배경 및 전체 정렬 */
+        body {
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #ffffff; /* 깔끔한 흰색 배경 */
+            color: #333; /* 진한 회색 글자 */
+            font-family: 'Apple SD Gothic Neo', 'Malgun Gothic', sans-serif;
+        }
+
+        /* 컨테이너 위치 조정 (중앙에서 위로 올림) */
+        .container {
+            text-align: center;
+            margin-bottom: 20vh; /* 시각적 중앙을 위해 위로 올림 */
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            margin: 10px 0;
+            letter-spacing: -1px;
+        }
+
+        .description {
+            color: #666;
+            line-height: 1.6;
+            font-size: 1.1rem;
+        }
+
+        /* 버튼 스타일 */
+        a {
+            display: inline-block;
+            margin-top: 25px;
+            padding: 12px 24px;
+            background-color: #333;
+            color: white;
+            text-decoration: none;
+            border-radius: 8px;
+            font-weight: bold;
+            transition: 0.2s;
+        }
+
+        a:hover {
+            background-color: #555;
+            transform: translateY(-2px); /* 살짝 떠오르는 효과 */
+        }
+    </style>
 </head>
 <body>
-    <h1>PUDOLY PUDOL</h1>
-    <p>test용으로 만든 사이트입니다</p>
-    <p>퍼돌이가 직접 만든거임 ㅎㅎ</p>
-    
-    <hr>
-    <h3>🎮 서버 접속 정보</h3>
-    <p>주소: <b>pudol.kro.kr</b></p>
+
+    <div class="container">
+        <h1>Welcome to Server</h1>
+        <p class="description">
+            현재 페이지를 준비 중입니다.<br>
+            아래 버튼을 눌러 메인 페이지로 이동해 주세요.
+        </p>
+        
+        <a href="https://www.pudol.kro.kr/main">메인으로 이동</a>
+    </div>
+
 </body>
 </html>
