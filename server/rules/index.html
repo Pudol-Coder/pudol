@@ -1,1 +1,157 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <link rel="icon" href="Logo_2.png" type="image/png">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>서버 안내 - PUDOLY</title>
+    
+    <style>
+        /* [기본 디자인] */
+        body {
+            margin: 0; padding: 0; display: flex; justify-content: center; align-items: center;
+            min-height: 100vh; background-color: #fffef0;
+            font-family: 'Apple SD Gothic Neo', sans-serif; color: #5D4037;
+        }
 
+        .main-wrapper {
+            display: flex; flex-direction: row; align-items: center; gap: 60px;
+            max-width: 1000px; width: 90%; padding: 40px 0;
+        }
+
+        /* [왼쪽 메뉴 디자인] */
+        .info-section { flex: 1; text-align: left; }
+        .info-section h2 { font-size: 2.2rem; color: #856404; margin-bottom: 20px; }
+        .info-list { list-style: none; padding: 0; }
+
+        .info-item {
+            background-color: rgba(255, 255, 255, 0.6); margin-bottom: 15px; padding: 20px;
+            border-radius: 20px; border-left: 5px solid #ffcc00; transition: all 0.2s;
+            cursor: pointer;
+        }
+        .info-item:hover { transform: translateX(10px); background-color: #ffffff; }
+        .info-item.active { 
+            background-color: #ffffff; 
+            border-left: 10px solid #ffcc00; 
+            box-shadow: 0 5px 15px rgba(255, 204, 0, 0.15); 
+        }
+
+        .info-item h3 { margin: 0 0 5px 0; font-size: 1.1rem; color: #856404; }
+        .info-item p { margin: 0; font-size: 0.95rem; color: #7d6b41; }
+
+        /* [오른쪽 카드 디자인] */
+        .container {
+            flex: 0 0 380px; text-align: center; background-color: #ffffff;
+            padding: 50px 40px; border-radius: 40px;
+            box-shadow: 0 20px 40px rgba(255, 211, 0, 0.12); border: 2px solid #fff9c4;
+        }
+
+        .logo { width: 85px; height: 85px; margin-bottom: 20px; animation: float 3s infinite ease-in-out; }
+        @keyframes float { 0%, 100% { transform: translateY(0px); } 50% { transform: translateY(-12px); } }
+        
+        h1 { font-size: 1.8rem; margin: 10px 0; color: #856404; }
+        .description { font-size: 1rem; line-height: 1.6; color: #7d6b41; margin-bottom: 30px; }
+        
+        /* 2. 복사 박스 및 애니메이션 복구 */
+        .copy-box {
+            display: inline-block; cursor: pointer; font-weight: bold; color: #856404;
+            padding: 14px 24px; border-radius: 15px; background-color: #fff3cd;
+            min-width: 220px; text-align: center; border: 1px solid #ffeeba; margin-bottom: 30px;
+            transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            user-select: none;
+        }
+        .copy-box:hover { background-color: #ffcc00; color: #ffffff; transform: scale(1.03); }
+        /* 클릭했을 때 살짝 눌리는 느낌 */
+        .copy-box:active { transform: scale(0.95); }
+
+        /* 3. 버튼 그룹 및 버튼 디자인 복구 */
+        .btn-group { display: flex; flex-direction: column; gap: 12px; }
+        .btn { 
+            display: block; padding: 15px; text-decoration: none; border-radius: 14px; 
+            font-weight: bold; transition: all 0.3s; text-align: center;
+        }
+        .btn-primary { background-color: #ffcc00; color: white; }
+        .btn-primary:hover { background-color: #fbd84e; transform: translateY(-3px); }
+
+        /* 알림 메시지 */
+        .copy-notification {
+            position: fixed; top: -60px; left: 50%; transform: translateX(-50%);
+            background-color: #856404; color: white; padding: 12px 25px;
+            border-radius: 30px; font-weight: bold; z-index: 1000; transition: 0.4s;
+        }
+        .copy-notification.show { top: 30px; }
+
+        @media (max-width: 850px) {
+            .main-wrapper { flex-direction: column; gap: 40px; text-align: center; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="main-wrapper">
+        <div class="info-section">
+            <h2><b>퍼돌이 서버</b></h2>
+            <ul class="info-list">
+                <li class="info-item" onclick="location.href='/server/introduce'">
+                    <h3>⭐ 서버 소개</h3>
+                    <p>퍼돌이 서버의 중요 정보들을 봐요!</p>
+                </li>
+                <li class="info-item active" onclick="location.href='/server/rules'">
+                    <h3>🛡️ 보안 및 규칙</h3>
+                    <p>쾌적한 플레이를 위한 약속!</p>
+                </li>
+                <li class="info-item" onclick="location.href='/server/system'">
+                    <h3>🌐 시스템 설명</h3>
+                    <p>이거 모르면 플레이하기 어려움!</p>
+                </li>
+                <li class="info-item" onclick="location.href='/server/updates'">
+                    <h3>📢 최신 업데이트</h3>
+                    <p>이거 궁금해서 오는 사람들이 더 많음..</p>
+                </li>
+                <li class="info-item" onclick="location.href='/server/map'">
+                    <h3>🌍 지도</h3>
+                    <p>서버가 켜지면 볼 수 있는 지도!</p>
+                </li>
+            </ul>
+        </div>
+
+        <div class="container">
+            <img src="Logo_2.png" class="logo" alt="Logo">
+            <h1>서버 안내</h1>
+            <p class="description">
+                현재 서버는 개발 중입니다<br>
+                언젠가는 열릴겁니다!
+            </p>
+            
+            <div class="copy-box" onclick="copyText(this, 'pudol.kro.kr')">
+                주소 : pudol.kro.kr
+            </div>
+
+            <div class="btn-group">
+                <a href="https://www.pudol.kro.kr/main" class="btn btn-primary">메인 페이지로 이동</a>
+                <a href="/server/introduce" class="btn btn-primary">서버 소개 확인하기</a>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function copyText(element, text) {
+            navigator.clipboard.writeText(text).then(() => {
+                const nav = document.createElement('div');
+                nav.className = 'copy-notification';
+                nav.innerText = "주소가 복사되었습니다! ✅";
+                document.body.appendChild(nav);
+                
+                // 알림 표시 애니메이션
+                setTimeout(() => nav.classList.add('show'), 100);
+                setTimeout(() => {
+                    nav.classList.remove('show');
+                    setTimeout(() => nav.remove(), 400);
+                }, 2000);
+            }).catch(err => {
+                alert("복사에 실패했습니다.");
+            });
+        }
+    </script>
+</body>
+</html>
