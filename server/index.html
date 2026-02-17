@@ -115,6 +115,26 @@
             background-color: #fff9c4;
             transform: translateY(-3px);
         }
+        .copy-text {
+            display: inline-block;
+            cursor: pointer; /* 손가락 모양 */
+            font-weight: bold;
+            color: #856404;
+            padding: 10px 20px;
+            border-radius: 12px;
+            background-color: #fff9c4;
+            transition: all 0.2s;
+            min-width: 150px;
+            text-align: center;
+            border: 2px solid #ffecb3;
+            user-select: none; /* 텍스트 선택 방지 */
+        }
+        
+        .copy-text:hover {
+            background-color: #ffcc00;
+            color: #ffffff;
+            transform: scale(1.05); /* 마우스 올리면 살짝 커짐 */
+        }
     </style>
 </head>
 <body>
