@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <link rel="icon" href="../../Logo_2.png" type="image/png">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>업데이트 상세 내역 - PUDOLY</title>
+    <style>
+        /* 기존 디자인 스타일 유지 (생략, 위에서 쓴 스크롤 카드 디자인과 동일) */
+        /* ... (중략: 이전 카드 디자인 CSS를 여기에 넣으세요) ... */
+        
+        body { margin: 0; padding: 0; display: flex; justify-content: center; align-items: center; height: 100vh; background-color: #fffef0; font-family: 'Apple SD Gothic Neo', sans-serif; }
+        .container { width: 400px; background: white; padding: 40px; border-radius: 40px; box-shadow: 0 10px 30px rgba(0,0,0,0.05); text-align: center; }
+        .version-tag { background: #ffcc00; color: white; padding: 5px 15px; border-radius: 20px; font-weight: bold; font-size: 0.9rem; }
+        .content-box { text-align: left; margin-top: 20px; line-height: 1.8; color: #555; }
+        .back-btn { display: inline-block; margin-top: 30px; color: #856404; text-decoration: none; font-weight: bold; }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <span id="version-display" class="version-tag">Version Loading...</span>
+        <h1 id="title-display">업데이트 소식</h1>
+        <hr>
+        
+        <div id="content-display" class="content-box">
+            내용을 불러오고 있습니다...
+        </div>
+
+        <a href="/server/updates" class="back-btn">← 목록으로 돌아가기</a>
+    </div>
+
+    <script>
+        // 1. 업데이트 데이터 정리 (앞으로는 여기만 수정하면 끝!)
+        const updateData = {
+            "1.0.0": {
+                title: "서버의 시작!",
+                content: "• 퍼돌이 서버가 드디어 오픈했습니다.<br>• 야생 월드가 추가되었습니다.<br>• 기본 명령어 세팅 완료."
+            },
+            "1.1.0": {
+                title: "편의성 업데이트",
+                content: "• 상점 시스템이 도입되었습니다.<br>• 스폰 지역 디자인이 변경되었습니다.<br>• 렉 현상을 20% 개선했습니다."
+            }
+        };
+
+        // 2. URL에서 버전 정보 읽어오기 (예: ?v=1.0.0)
+        const urlParams = new URLSearchParams(window.location.search);
+        const version = urlParams.get('v');
+
+        // 3. 데이터 매칭해서 화면에 뿌려주기
+        const displayVersion = document.getElementById('version-display');
+        const displayTitle = document.getElementById('title-display');
+        const displayContent = document.getElementById('content-display');
+
+        if (version && updateData[version]) {
+            displayVersion.innerText = "Version " + version;
+            displayTitle.innerText = updateData[version].title;
+            displayContent.innerHTML = updateData[version].content;
+        } else {
+            displayTitle.innerText = "정보 없음";
+            displayContent.innerText = "해당 버전의 업데이트 내역을 찾을 수 없습니다.";
+        }
+    </script>
+</body>
+</html>
